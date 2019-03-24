@@ -5,14 +5,7 @@ set shiftwidth=2
 
 let g:mapleader=',' 
 let g:maplocalleader='\\'
-set number
 set encoding=utf-8
-
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-map <CR> :nohl<cr>
 
 set cursorline
 set cursorcolumn
@@ -62,11 +55,56 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
+
+  Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
+" General settings {{{
+set encoding=utf-8
+set t_Co=256                      " moar colors
+" set clipboard=unnamed             " use system clipboard
+set nocompatible                  " nocompatible is good for humans
+syntax enable                     " enable syntax highlighting...
+filetype plugin indent on         " depending on filetypes...
+set pastetoggle=<F12>             " for pasting code into Vim
+set timeout tm=1000 ttm=10        " fix slight delay after pressing Esc then O
+set autoread                      " auto load files if vim detects change
+set autowrite                     " auto write files when moving around
+set nobackup                      " disable backup files...
+set noswapfile                    " and swap files
+
+" Style
 set background=dark
-syntax enable
-colorscheme molokai
+" colorscheme molokai
+colorscheme PaperColor
+silent! color gruvbox
+set number                        " line numbers are cool
+set ruler                         " show the cursor position all the time
+set nocursorline                  " disable cursor line
+set showcmd                       " display incomplete commands
+set novisualbell                  " no flashes please
+set scrolloff=3                   " provide some context when editing
+set hidden                        " allow backgrounding buffers without writing them, and
+                                  " remember marks/undo for backgrounded buffers
+" List chars
+set listchars=""                  " reset the listchars
+set listchars=tab:▸\ ,eol:¬       " a tab should display as "▸ ", end of lines as "¬"
+set listchars+=trail:.            " show trailing spaces as dots
+set listchars+=extends:>          " the character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+set listchars+=precedes:<         " the character to show in the first column when wrap is
+                                  " off and the line continues beyond the left of the screen
+set fillchars+=vert:\             " set vertical divider to empty space
+
+
+" Searching
+set hlsearch                      " highlight matches...
+nohlsearch                        " but don't highlight last search when reloading
+set incsearch                     " incremental searching
+set ignorecase                    " searches are case insensitive...
+set smartcase                     " unless they contain at least one capital letter
+
+map <CR> :nohl<cr>
 
 setlocal spell spelllang=en_us
 if filereadable("/usr/share/dict/words")
