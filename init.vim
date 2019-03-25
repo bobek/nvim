@@ -47,9 +47,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
     map <C-b> :CtrlPBuffer<CR>
 
-  Plug 'c-brenn/phoenix.vim'
-  Plug 'tpope/vim-projectionist'
+  " Plugins for Elixir / Phoenix development
   Plug 'slashmili/alchemist.vim'
+  Plug 'elixir-editors/vim-elixir'
 
   Plug 'sudar/vim-arduino-syntax'
   Plug 'scrooloose/nerdcommenter'
