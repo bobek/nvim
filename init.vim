@@ -31,7 +31,10 @@ call plug#begin('~/.config/nvim/plugged')
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
   Plug 'sheerun/vim-polyglot'
+
+  " Color schemes
   Plug 'tomasr/molokai'
+  Plug 'NLKNguyen/papercolor-theme'
 
   Plug 'neomake/neomake'
     augroup localneomake
@@ -55,8 +58,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
-
-  Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 " General settings {{{
