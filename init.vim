@@ -25,16 +25,20 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    let g:deoplete#enable_at_startup = 1
-    " use tab for completion
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+"    let g:deoplete#enable_at_startup = 1
+"    " use tab for completion
+"    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
   Plug 'sheerun/vim-polyglot'
 
   " Color schemes
   Plug 'tomasr/molokai'
   Plug 'NLKNguyen/papercolor-theme'
+
+  " Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
+  " Plug 'w0rp/ale'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   Plug 'neomake/neomake'
     augroup localneomake
