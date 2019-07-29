@@ -25,10 +25,12 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 call plug#begin('~/.config/nvim/plugged')
-"  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-"    let g:deoplete#enable_at_startup = 1
-"    " use tab for completion
-"    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+    let g:deoplete#enable_at_startup = 1
+    " use tab for completion
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
   Plug 'sheerun/vim-polyglot'
 
