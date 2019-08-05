@@ -35,7 +35,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'sheerun/vim-polyglot'
 
   " Color schemes
-  Plug 'tomasr/molokai'
   Plug 'NLKNguyen/papercolor-theme'
 
   " Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
@@ -60,7 +59,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'slashmili/alchemist.vim'
   Plug 'elixir-editors/vim-elixir'
 
-  Plug 'sudar/vim-arduino-syntax'
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
@@ -82,9 +80,10 @@ set noswapfile                    " and swap files
 
 " Style
 set background=dark
-" colorscheme molokai
 colorscheme PaperColor
-silent! color gruvbox
+let g:airline_theme='papercolor'
+
+
 set number                        " line numbers are cool
 set ruler                         " show the cursor position all the time
 set nocursorline                  " disable cursor line
