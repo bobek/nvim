@@ -62,6 +62,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
+
+  Plug 'fatih/vim-go'
 call plug#end()
 
 " General settings {{{
