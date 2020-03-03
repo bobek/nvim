@@ -59,6 +59,14 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'slashmili/alchemist.vim'
   Plug 'elixir-editors/vim-elixir'
 
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
+
+  " (Optional) Multi-entry selection UI.
+  Plug 'junegunn/fzf'
+
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
@@ -85,7 +93,6 @@ set background=dark
 colorscheme PaperColor
 let g:airline_theme='papercolor'
 
-
 set number                        " line numbers are cool
 set ruler                         " show the cursor position all the time
 set nocursorline                  " disable cursor line
@@ -104,7 +111,6 @@ set listchars+=precedes:<         " the character to show in the first column wh
                                   " off and the line continues beyond the left of the screen
 set fillchars+=vert:\             " set vertical divider to empty space
 
-
 " Searching
 set hlsearch                      " highlight matches...
 nohlsearch                        " but don't highlight last search when reloading
@@ -120,3 +126,21 @@ if filereadable("/usr/share/dict/words")
 endif
 
 hi SpellBad cterm=underline
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['solargraph', 'stdio'],
+    \ 'elixir': ['~/bin/elixir-ls/release/language_server.sh'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
