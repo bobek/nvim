@@ -34,6 +34,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'sheerun/vim-polyglot'
 
+  Plug 'preservim/nerdtree'
+  map <C-n> :NERDTreeToggle<CR>
+
   " Color schemes
   Plug 'NLKNguyen/papercolor-theme'
 
@@ -64,6 +67,8 @@ call plug#begin('~/.config/nvim/plugged')
       \ 'do': 'bash install.sh',
       \ }
 
+  Plug 'vimwiki/vimwiki'
+
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
 
@@ -72,6 +77,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'rhysd/vim-grammarous'
 
   Plug 'fatih/vim-go'
+
+  " Zettelkasten for vim
+  "Plug 'vimwiki/vimwiki'
+  Plug 'michal-h21/vim-zettel'
 
   " Flash cursor after long jump
   Plug 'danilamihailov/beacon.nvim'
@@ -149,3 +158,15 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 " nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 " nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+
+" Zettelkasten
+let g:vimwiki_list = [{'path':'~/Sources/zettelkasten/','ext':'.md','syntax':'markdown'}]
+
+" Splits
+set splitbelow
+set splitright
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
