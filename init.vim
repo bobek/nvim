@@ -25,12 +25,12 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    let g:deoplete#enable_at_startup = 1
-    " use tab for completion
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  "Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  "  let g:deoplete#enable_at_startup = 1
+  "  " use tab for completion
+  "  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+  "  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
   Plug 'sheerun/vim-polyglot'
 
@@ -64,14 +64,19 @@ call plug#begin('~/.config/nvim/plugged')
       \ 'do': 'bash install.sh',
       \ }
 
-  " (Optional) Multi-entry selection UI.
   Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf.vim'
 
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
 
   Plug 'fatih/vim-go'
+
+  " Flash cursor after long jump
+  Plug 'danilamihailov/beacon.nvim'
+  let g:beacon_minimal_jump = 15
+  let g:beacon_size = 20
 call plug#end()
 
 " General settings {{{
