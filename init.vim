@@ -67,8 +67,6 @@ call plug#begin('~/.config/nvim/plugged')
       \ 'do': 'bash install.sh',
       \ }
 
-  Plug 'vimwiki/vimwiki'
-
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
 
@@ -80,7 +78,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Zettelkasten for vim
   "Plug 'vimwiki/vimwiki'
-  Plug 'michal-h21/vim-zettel'
+  "Plug 'michal-h21/vim-zettel'
 
   " Flash cursor after long jump
   Plug 'danilamihailov/beacon.nvim'
