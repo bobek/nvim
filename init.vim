@@ -35,14 +35,26 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'sheerun/vim-polyglot'
 
   Plug 'preservim/nerdtree'
-  map <C-n> :NERDTreeToggle<CR>
+  Plug 'ryanoasis/vim-devicons'
+    let g:NERDTreeShowHidden = 1
+    let g:NERDTreeMinimalUI = 1
+    let g:NERDTreeIgnore = []
+    let g:NERDTreeStatusline = ''
+    nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 
   " Color schemes
   Plug 'NLKNguyen/papercolor-theme'
 
   " Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
-  " Plug 'w0rp/ale'
+  Plug 'dense-analysis/ale'
+    let g:ale_fix_on_save = 1
+    let g:ale_fixers = {
+          \ 'elixir': ['mix_format'],
+          \ 'go': ['gofmt'],
+          \ }
+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " use :CocInstall to install appropriate plugins
 
   Plug 'neomake/neomake'
     augroup localneomake
@@ -58,15 +70,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
     map <C-b> :CtrlPBuffer<CR>
 
-  " Plugins for Elixir / Phoenix development
-  Plug 'slashmili/alchemist.vim'
-  Plug 'elixir-editors/vim-elixir'
-
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
 
@@ -74,16 +77,25 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'rhysd/vim-grammarous'
 
-  Plug 'fatih/vim-go'
+  Plug 'terryma/vim-multiple-cursors'
 
-  " Zettelkasten for vim
-  "Plug 'vimwiki/vimwiki'
-  "Plug 'michal-h21/vim-zettel'
+  Plug 'ferrine/md-img-paste.vim'
+    autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+
+  Plug 'dyng/ctrlsf.vim'
+    nmap     <C-F>f <Plug>CtrlSFPrompt
+    vmap     <C-F>f <Plug>CtrlSFVwordPath
+    vmap     <C-F>F <Plug>CtrlSFVwordExec
+    nmap     <C-F>n <Plug>CtrlSFCwordPath
+    nmap     <C-F>p <Plug>CtrlSFPwordPath
+    nnoremap <C-F>o :CtrlSFOpen<CR>
+    nnoremap <C-F>t :CtrlSFToggle<CR>
+    inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
   " Flash cursor after long jump
   Plug 'danilamihailov/beacon.nvim'
-  let g:beacon_minimal_jump = 15
-  let g:beacon_size = 20
+    let g:beacon_minimal_jump = 15
+    let g:beacon_size = 20
 call plug#end()
 
 " General settings {{{
@@ -142,29 +154,43 @@ hi SpellBad cterm=underline
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ 'elixir': ['~/bin/elixir-ls/release/language_server.sh'],
-    \ }
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-
-" Zettelkasten
-let g:vimwiki_list = [{'path':'~/Sources/zettelkasten/','ext':'.md','syntax':'markdown'}]
-
 " Splits
 set splitbelow
 set splitright
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+
+" use alt+hjkl to move between split/vsplit panels
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
+
+" coc.vim configuration
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+          execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+   endif
+endfunction
