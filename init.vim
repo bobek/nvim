@@ -73,6 +73,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
 
+  " Snippets are separated from the engine.
+  Plug 'honza/vim-snippets'
+
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
@@ -200,6 +203,12 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
+
+" Use <C-l> for trigger snippet expand.
+" use <C-j> to jump to next placeholder
+" use <C-k> to jump to previous placeholder
+imap <C-l> <Plug>(coc-snippets-expand)
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
