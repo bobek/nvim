@@ -72,6 +72,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
+    "let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+    let $FZF_DEFAULT_COMMAND='rg --files'
+    let $FZF_DEFAULT_OPTS='-m --height 50% --border'
 
   " Snippets are separated from the engine.
   Plug 'honza/vim-snippets'
@@ -80,10 +83,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'rhysd/vim-grammarous'
 
-  Plug 'terryma/vim-multiple-cursors'
-
   Plug 'ferrine/md-img-paste.vim'
     autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 
   Plug 'dyng/ctrlsf.vim'
     nmap     <C-F>f <Plug>CtrlSFPrompt
