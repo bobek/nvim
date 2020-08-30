@@ -229,3 +229,14 @@ function! s:show_documentation()
       call CocAction('doHover')
    endif
 endfunction
+
+if has('persistent_undo')
+    let target_path = expand('/tmp/$USER-nvim-persistent-undo/')
+    if !isdirectory(target_path)
+        call system('mkdir -p ' . target_path)
+        call system('chmod 700 ' . target_path)
+    endif
+
+    let &undodir = target_path
+    set undofile
+endif
