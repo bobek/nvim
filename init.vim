@@ -70,7 +70,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
     map <C-b> :CtrlPBuffer<CR>
 
-  Plug 'junegunn/fzf'
+  "Plug 'junegunn/fzf'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
     "let $FZF_DEFAULT_COMMAND = 'ag -g ""'
     let $FZF_DEFAULT_COMMAND='rg --files --hidden'
