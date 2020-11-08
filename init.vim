@@ -56,6 +56,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " use :CocInstall to install appropriate plugins
 
+  Plug 'sjl/gundo.vim'
+    nnoremap <F5> :GundoToggle<CR>
+    let g:gundo_prefer_python3 = 1
+
   Plug 'neomake/neomake'
     augroup localneomake
       autocmd! BufWritePost * Neomake
@@ -69,6 +73,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'ctrlpvim/ctrlp.vim'
     map <C-b> :CtrlPBuffer<CR>
+
+  Plug 'junegunn/vim-peekaboo'
 
   "Plug 'junegunn/fzf'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
