@@ -56,6 +56,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " use :CocInstall to install appropriate plugins
 
+  " Debugger: https://github.com/puremourning/vimspector
+
   Plug 'sjl/gundo.vim'
     nnoremap <F5> :GundoToggle<CR>
     let g:gundo_prefer_python3 = 1
@@ -246,3 +248,5 @@ if has('persistent_undo')
     let &undodir = target_path
     set undofile
 endif
+
+set secure
