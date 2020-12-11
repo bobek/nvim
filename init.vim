@@ -101,6 +101,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'rhysd/vim-grammarous'
 
+  " Show changes directly in the code
+  Plug 'mhinz/vim-signify'
+
   Plug 'ferrine/md-img-paste.vim'
     autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
