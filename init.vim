@@ -94,9 +94,6 @@ call plug#begin('~/.config/nvim/plugged')
       \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
       \   <bang>0)
 
-  " Snippets are separated from the engine.
-  Plug 'honza/vim-snippets'
-
   Plug 'scrooloose/nerdcommenter'
 
   Plug 'rhysd/vim-grammarous'
@@ -228,10 +225,12 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
 
+" :CocInstall coc-snippets
 " Use <C-l> for trigger snippet expand.
 " use <C-j> to jump to next placeholder
 " use <C-k> to jump to previous placeholder
 imap <C-l> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
