@@ -95,6 +95,7 @@ call plug#begin('~/.config/nvim/plugged')
       \   <bang>0)
 
   Plug 'scrooloose/nerdcommenter'
+  Plug 'RRethy/vim-illuminate'
 
   Plug 'rhysd/vim-grammarous'
 
