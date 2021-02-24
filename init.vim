@@ -233,6 +233,9 @@ nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
 imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 
+" Surround word under cursor with the character after q
+nnoremap <leader>q :let c=nr2char(getchar())\|:exec "normal viwo\ei".c."\eea".c."\e"<CR>
+
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
           execute 'h '.expand('<cword>')
