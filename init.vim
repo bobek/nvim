@@ -78,6 +78,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'junegunn/vim-peekaboo'
 
+  Plug 'Yggdroot/indentLine'
+    let g:indentLine_char = '▏'
+
   "Plug 'junegunn/fzf'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
