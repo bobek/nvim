@@ -97,7 +97,7 @@ call plug#begin('~/.config/nvim/plugged')
       \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
       \   <bang>0)
 
-  Plug 'scrooloose/nerdcommenter'
+  Plug 'preservim/nerdcommenter'
   Plug 'RRethy/vim-illuminate'
 
   Plug 'rhysd/vim-grammarous'
