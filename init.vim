@@ -139,8 +139,6 @@ set autowrite                     " auto write files when moving around
 set nobackup                      " disable backup files...
 set noswapfile                    " and swap files
 
-set conceallevel=0                " don't hide the markdown markup
-
 " Style
 set background=dark
 colorscheme PaperColor
