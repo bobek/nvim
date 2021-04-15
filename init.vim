@@ -98,7 +98,6 @@ call plug#begin('~/.config/nvim/plugged')
       \   <bang>0)
 
   Plug 'preservim/nerdcommenter'
-  Plug 'RRethy/vim-illuminate'
 
   Plug 'rhysd/vim-grammarous'
 
@@ -214,38 +213,11 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 
-" coc.vim configuration
 
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <silent> <leader>co  :<C-u>CocList outline<CR>
-
-" :CocInstall coc-snippets
-" Use <C-l> for trigger snippet expand.
-" use <C-j> to jump to next placeholder
-" use <C-k> to jump to previous placeholder
-imap <C-l> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
 
 " Surround word under cursor with the character after q
 nnoremap <leader>q :let c=nr2char(getchar())\|:exec "normal viwo\ei".c."\eea".c."\e"<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-          execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-   endif
-endfunction
 
 if has('persistent_undo')
     let target_path = expand('/tmp/$USER-nvim-persistent-undo/')
@@ -257,5 +229,7 @@ if has('persistent_undo')
     let &undodir = target_path
     set undofile
 endif
+
+source $HOME/.config/nvim/coc.vim
 
 set secure

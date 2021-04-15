@@ -1,8 +1,30 @@
 {
-   "languageserver": {
+  "suggest.noselect": false,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
+  "diagnostic.checkCurrentLine": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "html",
+    "json",
+    "css",
+    "scss",
+    "go"
+  ],
+  "coc.preferences.hoverTarget": "float",
+  "languageserver": {
        "zls" : {
-           "command": "~/bin/zls",
-           "filetypes": ["zig"]
-       }
-   }
+         "command": "~/bin/zls",
+         "filetypes": ["zig"]
+       },
+      "golang": {
+         "command": "gopls",
+         "rootPatterns": ["go.mod"],
+         "filetypes": ["go"]
+    }
+  },
+  "go.goplsOptions": {
+    "staticcheck": true
+  }
 }
