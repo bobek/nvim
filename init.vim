@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugged')
   "  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
   Plug 'sheerun/vim-polyglot'
+    let g:vim_markdown_conceal = 0
 
   Plug 'preservim/nerdtree'
   Plug 'ryanoasis/vim-devicons'
@@ -207,8 +208,19 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 
+" enable indentation
+set breakindent
+" ident by an additional 2 characters on wrapped lines, when line >= 40 characters, put 'showbreak' at start of line
+" set breakindentopt=shift:2,min:40,sbr
+" append '>>' to indent
+" set showbreak=>>
 
+" Correct typos in insert mode.  Copied from <https://castel.dev/post/lecture-notes-1/>.
+" inoremap <C-k> <C-G>u<Esc>[s1z=`]a<C-G>u
 
+" Open file under cursor non blocking (vs gx)
+nnoremap gX :silent :execute
+            \ "!xdg-open" expand('%:p:h') . "/" . expand("<cfile>") " &"<cr>
 
 " Surround word under cursor with the character after q
 nnoremap <leader>q :let c=nr2char(getchar())\|:exec "normal viwo\ei".c."\eea".c."\e"<CR>
