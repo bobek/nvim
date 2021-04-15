@@ -62,12 +62,6 @@ call plug#begin('~/.config/nvim/plugged')
     nnoremap <F5> :GundoToggle<CR>
     let g:gundo_prefer_python3 = 1
 
-  Plug 'neomake/neomake'
-    augroup localneomake
-      autocmd! BufWritePost * Neomake
-    augroup END
-    let g:neomake_markdown_enabled_makers = []
-
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
     let g:airline_powerline_fonts = 1
